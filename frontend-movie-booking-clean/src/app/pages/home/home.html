@@ -1,0 +1,34 @@
+<!-- <div class="navbar">
+  <div class="logo">🎬 MovieBookingApp</div>
+  <div class="menu">
+    <a>Home</a>
+    <a>Register</a>
+    <a>Login</a>
+  </div>
+</div> -->
+
+<div class="container">
+
+   <h2>📽️ Now Showing</h2>
+
+<div class="search-box">
+  <input [(ngModel)]="searchText" placeholder="Search movies..." />
+  <button (click)="search()">Search</button>
+</div>
+
+<div class="cards">
+  <div class="card" *ngFor="let m of filteredMovies">
+    <h3>{{ m.name }}</h3>
+    <p>{{ m.theatre }}</p>
+    <p>Available: {{ m.available }}</p>
+    <p>Status: <span [class]="m.status.replace(' ','')">{{ m.status }}</span></p>
+
+ <button
+  *ngIf="m.available > 0"
+  [routerLink]="['/book', m.name, m.theatre]">
+  Book Now
+</button>
+
+    <button class="sold" *ngIf="m.available === 0">Sold Out</button>
+  </div>
+</div>

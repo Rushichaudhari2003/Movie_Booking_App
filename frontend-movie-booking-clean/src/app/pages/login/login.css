@@ -1,0 +1,70 @@
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f7fa;
+  position: relative;
+}
+
+/* THE REAL FIX */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 360px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  text-align: center;
+  position: relative;
+  z-index: 10000;
+}
+
+.card h3 {
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #0d8cc7;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0b79ad;
+}
+
+.error {
+  color: red;
+  margin-top: 8px;
+}
+
+.links p {
+  margin-top: 10px;
+}
+
+.links a {
+  color: #0d8cc7;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  z-index: 10001;
+}
+
+/* removes invisible blocking layers */
+.login-wrapper::before,
+.login-wrapper::after {
+  content: none !important;
+  pointer-events: none !important;
+}

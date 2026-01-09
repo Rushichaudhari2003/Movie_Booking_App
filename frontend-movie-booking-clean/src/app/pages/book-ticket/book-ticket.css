@@ -1,0 +1,38 @@
+.ticket-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #f4f7fb;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+  margin: 25px 0;
+}
+
+.seat-grid button {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #ddd;
+  cursor: pointer;
+}
+
+.seat-grid button.selected {
+  background: #00c853;
+  color: white;
+}
+
+.confirm-btn {
+  margin-top: 15px;
+  padding: 10px 35px;
+  background: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

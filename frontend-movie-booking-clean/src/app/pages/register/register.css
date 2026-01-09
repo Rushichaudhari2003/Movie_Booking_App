@@ -1,0 +1,139 @@
+.register-container {
+  width: 380px;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+button:disabled {
+  background: #ccc;
+}
+
+.password-rules {
+  text-align: left;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+.password-rules li {
+  color: red;
+}
+
+.password-rules li.ok {
+  color: green;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+}
+
+.success {
+  margin-top: 10px;
+  color: #28a745;
+  font-size: 14px;
+  text-align: center;
+}
+
+.error {
+  margin-top: 10px;
+  color: red;
+  font-size: 14px;
+  text-align: center;
+}
+.message {
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.success {
+  color: #2e7d32;
+}
+
+.error {
+  color: #c62828;
+}
+
+.password-rules li.ok {
+  color: green;
+}
+ 
+.register-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 380px;
+  padding: 25px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+}
+
+input {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #0d6efd;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.password-rules li { color: red; font-size: 13px; }
+.password-rules li.ok { color: #28a745; }
+
+.success { color: #28a745; text-align: center; margin-top: 10px; }
+.error { color: red; text-align: center; margin-top: 10px; }
+.password-rules li {
+  color: red;
+  font-size: 13px;
+}
+
+.password-rules li.ok {
+  color: #28a745;
+}
+
+.success {
+  margin-top: 10px;
+  color: #28a745;
+  font-size: 14px;
+  text-align: center;
+}
+
+.error {
+  margin-top: 10px;
+  color: red;
+  font-size: 14px;
+  text-align: center;
+}

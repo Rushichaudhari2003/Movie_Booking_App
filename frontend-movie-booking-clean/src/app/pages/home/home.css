@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f6f9;
+}
+
+.navbar {
+  background: linear-gradient(90deg, #004e92, #000428);
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu a {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.container {
+  text-align: center;
+  padding: 30px;
+}
+
+.search-box {
+  margin: 20px auto;
+}
+
+.search-box input {
+  width: 300px;
+  padding: 8px;
+}
+
+.search-box button {
+  padding: 8px 15px;
+  background: #00aaff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+.card button {
+  background: #00aaff;
+  border: none;
+  padding: 8px 15px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sold {
+  background: #aaa !important;
+}
+
+.Available { color: green; }
+.SoldOut { color: red; }
+.BookASAP { color: orange; }

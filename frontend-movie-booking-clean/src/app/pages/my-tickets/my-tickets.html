@@ -1,0 +1,25 @@
+<div class="tickets-page">
+
+  <h2>✏️ My Tickets</h2>
+
+  <div class="ticket-grid" *ngIf="tickets.length > 0; else noTickets">
+
+    <div class="ticket-card" *ngFor="let t of tickets">
+
+      <h3>{{ t.movieName }}</h3>
+      <p class="theatre">{{ t.theatreName }}</p>
+
+      <p><strong>Seats:</strong> {{ t.seats }}</p>
+      <p><strong>Quantity:</strong> {{ t.quantity }}</p>
+
+      <span class="status">{{ t.status }}</span>
+
+    </div>
+
+  </div>
+
+  <ng-template #noTickets>
+    <p style="text-align:center; margin-top:20px;">No tickets found</p>
+  </ng-template>
+
+</div>

@@ -1,0 +1,22 @@
+<div class="ticket-container">
+
+  <h2>✏️ Select Your Seats</h2>
+  <p>{{ movieName }} — {{ theatreName }}</p>
+
+  <div class="seat-grid">
+    <button
+      *ngFor="let seat of allSeats"
+      (click)="toggleSeat(seat)"
+      [class.selected]="selectedSeats.includes(seat)">
+      {{ seat }}
+    </button>
+  </div>
+
+  <p><strong>Selected Seats:</strong> {{ selectedSeats.join(', ') }}</p>
+  <p><strong>Tickets:</strong> {{ selectedSeats.length }}</p>
+
+  <button class="confirm-btn" (click)="confirmBooking()">
+    Confirm Booking
+  </button>
+
+</div>

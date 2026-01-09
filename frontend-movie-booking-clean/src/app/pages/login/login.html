@@ -1,0 +1,33 @@
+ 
+ <div class="login-wrapper">
+  <div class="card">
+
+    <h3>Welcome Back 🎬</h3>
+
+    <input
+      type="text"
+      placeholder="Username"
+      [(ngModel)]="username">
+
+    <input
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="password">
+
+    <button (click)="login()">Login</button>
+
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+    <div class="links">
+      <p>
+        Don't have an account?
+        <a routerLink="/register">Register here</a>
+      </p>
+
+      <p>
+        <a routerLink="/forgot-password">Forgot Password?</a>
+      </p>
+    </div>
+
+  </div>
+</div>
