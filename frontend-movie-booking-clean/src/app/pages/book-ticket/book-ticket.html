@@ -14,9 +14,17 @@
 
   <p><strong>Selected Seats:</strong> {{ selectedSeats.join(', ') }}</p>
   <p><strong>Tickets:</strong> {{ selectedSeats.length }}</p>
-
+<p class="limit-warning" *ngIf="limitMessage">
+  {{ limitMessage }}
+</p>
+<button class="confirm-btn"
+        (click)="confirmBooking()"
+        [disabled]="selectedSeats.length === 0">
+  Confirm Booking
+</button>
+<!-- 
   <button class="confirm-btn" (click)="confirmBooking()">
     Confirm Booking
-  </button>
+  </button> -->
 
 </div>

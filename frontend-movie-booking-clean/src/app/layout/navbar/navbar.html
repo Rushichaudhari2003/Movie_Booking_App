@@ -10,7 +10,7 @@
   <a routerLink="/reset-password">Change Password</a>
     <!-- <a routerLink="/my-tickets">My Tickets</a> -->
 
-
+<a *ngIf="isAdmin" routerLink="/admin">Admin</a>
     <span class="username" *ngIf="username">
       Hi, {{ username }}
     </span>

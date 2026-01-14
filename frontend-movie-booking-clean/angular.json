@@ -27,12 +27,7 @@
             ],
             "styles": [
               "src/styles.css"
-            ],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            ]
           },
           "configurations": {
             "production": {
@@ -56,16 +51,16 @@
               "sourceMap": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular/build:dev-server",
           "configurations": {
-            "production": {
-              "buildTarget": "frontend-movie-booking-clean:build:production"
-            },
             "development": {
               "buildTarget": "frontend-movie-booking-clean:build:development"
+            },
+            "production": {
+              "buildTarget": "frontend-movie-booking-clean:build:production"
             }
           },
           "defaultConfiguration": "development"

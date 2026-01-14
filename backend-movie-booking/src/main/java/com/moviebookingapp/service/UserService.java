@@ -26,7 +26,12 @@ public class UserService {
             throw new RuntimeException("Email already exists");
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole("USER");
+        /* user.setRole("USER"); */
+        if (user.getUsername().equalsIgnoreCase("admin")) {
+    user.setRole("ADMIN");
+} else {
+    user.setRole("USER");
+}
 
         return userRepository.save(user);
     }
@@ -42,4 +47,26 @@ public class UserService {
 
         return user;
     }
+ /*   public void resetPassword(String username, String newPassword) {
+    User user = userRepository.findByUsername(username)
+        .orElseThrow(() -> new RuntimeException("User not found"));
+
+    user.setPassword(passwordEncoder.encode(newPassword));
+    userRepository.save(user);
+} */
+
+public void resetPassword(String username, String newPassword) {
+
+    User user = userRepository.findByUsername(username)
+        .orElseThrow(() -> new RuntimeException("User not found"));
+
+    // 🔐 NEW: prevent reusing same password
+    if (passwordEncoder.matches(newPassword, user.getPassword())) {
+        throw new RuntimeException("New password cannot be the same as old password");
+    }
+
+    user.setPassword(passwordEncoder.encode(newPassword));
+    userRepository.save(user);
+}
+
 }

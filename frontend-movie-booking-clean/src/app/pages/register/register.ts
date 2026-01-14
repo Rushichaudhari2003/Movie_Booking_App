@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../services/api';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './register.html',
   styleUrls: ['./register.css']
 })
@@ -65,11 +66,23 @@ export class RegisterComponent {
           this.router.navigate(['/login']);
         }, 2000);
       },
-      error: (err) => {
+  /*     error: (err) => {
   console.log('Registration error:', err);
   this.errorMessage = err?.error || 'Registration failed';
   this.successMessage = '';
+} */
+error: (err) => {
+  console.log('Registration error:', err);
+
+  if (typeof err?.error === 'string') {
+    this.errorMessage = '❌ ' + err.error;
+  } else {
+    this.errorMessage = '❌ Registration failed';
+  }
+
+  this.successMessage = '';
 }
+
 
     });
   }

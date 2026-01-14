@@ -68,3 +68,38 @@ button:hover {
   content: none !important;
   pointer-events: none !important;
 }
+.form-block {
+  width: 100%;
+}
+
+.form-block input,
+.form-block button {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.password-box {
+  position: relative;
+  width: 100%;
+}
+
+.password-box input {
+  width: 100%;
+  padding-right: 42px;
+  box-sizing: border-box;
+}
+
+.password-box i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #555;
+  font-size: 18px;
+}
+
+.password-box i:hover {
+  color: #0d8cc7;
+}
+

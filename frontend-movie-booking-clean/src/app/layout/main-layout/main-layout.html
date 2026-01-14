@@ -1,23 +1,9 @@
-<!-- <nav class="navbar">
-  <div class="logo">🎬 MovieBookingApp</div>
-  <div class="menu">
-    <a routerLink="/home">Home</a>
-    <a routerLink="/register">Register</a>
-    <a routerLink="/login">Login</a>
-  </div>
-</nav>
-
-<div class="page-container">
-  <router-outlet></router-outlet>
-</div>
- -->
-<!-- 
- <app-navbar></app-navbar>
-<div class="page-container"> 
-  <router-outlet></router-outlet> -->
-<!-- </div> -->
-<app-navbar></app-navbar>
-
+ 
+ <!-- <app-navbar></app-navbar> -->
+<app-navbar *ngIf="auth.isLoggedIn()"></app-navbar>
 <div style="min-height: 100vh; background: #f5f7fa; padding-top: 60px;">
   <router-outlet></router-outlet>
 </div>
+ 
+
+  

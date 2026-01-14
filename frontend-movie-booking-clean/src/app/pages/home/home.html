@@ -9,26 +9,38 @@
 
 <div class="container">
 
-   <h2>📽️ Now Showing</h2>
+  <h2>📽️ Now Showing</h2>
 
-<div class="search-box">
-  <input [(ngModel)]="searchText" placeholder="Search movies..." />
-  <button (click)="search()">Search</button>
-</div>
+  <div class="search-box">
+    <input [(ngModel)]="searchText" placeholder="Search movies..." />
+    <button (click)="search()">Search</button>
+  </div>
 
-<div class="cards">
-  <div class="card" *ngFor="let m of filteredMovies">
-    <h3>{{ m.name }}</h3>
-    <p>{{ m.theatre }}</p>
-    <p>Available: {{ m.available }}</p>
-    <p>Status: <span [class]="m.status.replace(' ','')">{{ m.status }}</span></p>
+  <div class="cards">
+    <div class="card" *ngFor="let m of filteredMovies">
 
- <button
-  *ngIf="m.available > 0"
-  [routerLink]="['/book', m.name, m.theatre]">
-  Book Now
-</button>
+      <h3>{{ m.movieName }}</h3>
+      <p>{{ m.theatreName }}</p>
 
-    <button class="sold" *ngIf="m.available === 0">Sold Out</button>
+      <p>Available: {{ m.availableTickets }}</p>
+
+      <p>
+        Status:
+        <span [class]="m.status.replace(' ','')">
+          {{ m.status }}
+        </span>
+      </p>
+
+      <button
+        *ngIf="m.availableTickets > 0"
+        [routerLink]="['/book', m.movieName, m.theatreName]">
+        Book Now
+      </button>
+
+      <button class="sold" *ngIf="m.availableTickets === 0">
+        Sold Out
+      </button>
+
+    </div>
   </div>
 </div>

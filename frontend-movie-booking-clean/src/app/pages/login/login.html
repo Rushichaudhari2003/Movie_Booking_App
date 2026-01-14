@@ -1,20 +1,30 @@
- 
- <div class="login-wrapper">
+<div class="login-wrapper">
   <div class="card">
 
     <h3>Welcome Back 🎬</h3>
-
+<div class="form-block"> 
     <input
       type="text"
       placeholder="Username"
       [(ngModel)]="username">
 
-    <input
-      type="password"
-      placeholder="Password"
-      [(ngModel)]="password">
+ 
+      <div class="password-box">
+  <input
+    [type]="showPassword ? 'text' : 'password'"
+    placeholder="Password"
+    [(ngModel)]="password">
+
+  <i class="fa-solid"
+     [class.fa-eye]="showPassword"
+     [class.fa-eye-slash]="!showPassword"
+     (click)="togglePassword()">
+  </i>
+</div>
+
 
     <button (click)="login()">Login</button>
+     </div>
 
     <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
@@ -22,10 +32,12 @@
       <p>
         Don't have an account?
         <a routerLink="/register">Register here</a>
+        
+
       </p>
 
       <p>
-        <a routerLink="/forgot-password">Forgot Password?</a>
+        <a routerLink="/reset-password">Forgot Password?</a>
       </p>
     </div>
 

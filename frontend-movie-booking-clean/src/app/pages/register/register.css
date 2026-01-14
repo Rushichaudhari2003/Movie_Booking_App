@@ -137,3 +137,25 @@ button {
   font-size: 14px;
   text-align: center;
 }
+
+.login-link {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.bottom-error {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 10px;
+}

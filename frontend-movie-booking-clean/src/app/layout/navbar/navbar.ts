@@ -10,14 +10,15 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.css']
 })
-export class NavbarComponent implements OnInit {
-
+ export class NavbarComponent implements OnInit {
   username = '';
+  isAdmin = false;
 
   constructor(private auth: AuthService) {}
 
   ngOnInit() {
     this.username = this.auth.getUsername();
+    this.isAdmin = this.auth.isAdmin();
   }
 
   logout() {
@@ -25,3 +26,4 @@ export class NavbarComponent implements OnInit {
     location.href = '/login';
   }
 }
+

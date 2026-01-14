@@ -1,4 +1,4 @@
-<div class="register-wrapper">
+<!-- <div class="register-wrapper">
   <div class="card">
 
     <h2>Create an Account</h2>
@@ -34,6 +34,59 @@
   <button type="submit" [disabled]="f.invalid || !isPasswordValid() || !passwordsMatch()">
     Register
   </button>
+    </form>
+<div class="login-link">
+      Already have an account?
+      <a routerLink="/login">Login here</a>
+    </div>
+
+  </div>
+</div>
+  -->
+
+ <div class="register-wrapper">
+  <div class="card">
+
+    <h2>Create an Account</h2>
+
+    <form #f="ngForm" (ngSubmit)="register()" novalidate>
+
+      <input name="firstName" [(ngModel)]="user.firstName" placeholder="First Name" required>
+      <input name="lastName" [(ngModel)]="user.lastName" placeholder="Last Name" required>
+      <input type="email" name="email" [(ngModel)]="user.email" placeholder="Email" required>
+
+      <input name="username" [(ngModel)]="user.username" placeholder="Username" required>
+
+      <input type="password" name="password" [(ngModel)]="user.password" placeholder="Password" required>
+      <input type="password" name="confirmPassword" [(ngModel)]="user.confirmPassword" placeholder="Confirm Password" required>
+
+      <ul class="password-rules">
+        <li [class.ok]="passwordRules().length">Minimum 8 characters</li>
+        <li [class.ok]="passwordRules().upper">Uppercase letter</li>
+        <li [class.ok]="passwordRules().lower">Lowercase letter</li>
+        <li [class.ok]="passwordRules().number">Number</li>
+        <li [class.ok]="passwordRules().special">Special character</li>
+      </ul>
+
+      <input name="contactNumber" [(ngModel)]="user.contactNumber" placeholder="Contact Number" required>
+
+      <button type="submit" [disabled]="f.invalid || !isPasswordValid() || !passwordsMatch()">
+        Register
+      </button>
+
+      <!-- Error BELOW button exactly like your screenshot -->
+      <p class="error bottom-error" *ngIf="!passwordsMatch() && user.confirmPassword">
+        ❌ Passwords do not match.
+      </p>
+
+      <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+      <p class="login-link">
+        Already have an account?
+        <a routerLink="/login">Login here</a>
+      </p>
+
     </form>
 
   </div>
