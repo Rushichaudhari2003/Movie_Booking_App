@@ -12,41 +12,48 @@ import com.moviebookingapp.model.User;
 import com.moviebookingapp.repository.TicketRepository;
 import com.moviebookingapp.repository.UserRepository;
 import com.moviebookingapp.repository.MovieRepository;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
 public class TicketService {
+private static final Logger log = LoggerFactory.getLogger(TicketService.class);
 
-    private final TicketRepository ticketRepo;
-    private final UserRepository userRepo;
-    private final MovieRepository movieRepo;
+    private TicketRepository ticketRepo;
+    private UserRepository userRepo;
+    private MovieRepository movieRepo;
 
-
+     
     public TicketService(TicketRepository ticketRepo,
-                     UserRepository userRepo,
-                     MovieRepository movieRepo) {
-    this.ticketRepo = ticketRepo;
-    this.userRepo = userRepo;
-    this.movieRepo = movieRepo;
-}
+                         UserRepository userRepo,
+                         MovieRepository movieRepo) {
+        this.ticketRepo = ticketRepo;
+        this.userRepo = userRepo;
+        this.movieRepo = movieRepo;
+    }
 
+  @Autowired
+    public void setTicketRepo(TicketRepository ticketRepo) {
+        this.ticketRepo = ticketRepo;
+    }
 
-/*     public Ticket bookTicket(String movieName, TicketRequest req) {
+    @Autowired
+    public void setUserRepo(UserRepository userRepo) {
+        this.userRepo = userRepo;
+    }
 
-        User user = userRepo.findByUsername(req.getUsername())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+    @Autowired
+    public void setMovieRepo(MovieRepository movieRepo) {
+        this.movieRepo = movieRepo;
+    }
 
-        Ticket ticket = new Ticket();
-        ticket.setMovieName(req.getMovieName());
-        ticket.setTheatreName(req.getTheatreName());
-        ticket.setSeats(req.getSeatNumber());
-        ticket.setQuantity(req.getNumberOfTickets());
-        ticket.setStatus("Confirmed");
-        ticket.setUser(user);
-
-        return ticketRepo.save(ticket);
-    } */
+ 
   public Ticket bookTicket(String movieName, TicketRequest req) {
+
+    log.info("Booking started for user={}, movie={}, theatre={}, tickets={}",
+            req.getUsername(), req.getMovieName(), req.getTheatreName(), req.getNumberOfTickets());
+
 
     User user = userRepo.findByUsername(req.getUsername())
             .orElseThrow(() -> new RuntimeException("User not found"));
