@@ -15,6 +15,8 @@ import com.moviebookingapp.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.CacheManager;
+
 
 @Service
 public class TicketService {
@@ -23,14 +25,15 @@ private static final Logger log = LoggerFactory.getLogger(TicketService.class);
     private TicketRepository ticketRepo;
     private UserRepository userRepo;
     private MovieRepository movieRepo;
-
+private final CacheManager cacheManager;
      
     public TicketService(TicketRepository ticketRepo,
                          UserRepository userRepo,
-                         MovieRepository movieRepo) {
+                         MovieRepository movieRepo, CacheManager cacheManager) {
         this.ticketRepo = ticketRepo;
         this.userRepo = userRepo;
         this.movieRepo = movieRepo;
+        this.cacheManager = cacheManager;
     }
 
   @Autowired
@@ -79,6 +82,7 @@ private static final Logger log = LoggerFactory.getLogger(TicketService.class);
 
     movieRepo.save(movie);
 
+    cacheManager.getCache("movies").clear();
     Ticket ticket = new Ticket();
     ticket.setMovieName(req.getMovieName());
     ticket.setTheatreName(req.getTheatreName());

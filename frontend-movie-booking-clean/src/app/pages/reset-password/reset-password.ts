@@ -106,19 +106,35 @@ export class ResetPasswordComponent {
   }
 
   resetPassword() {
-    if (!this.isValidPassword() || !this.passwordsMatch()) return;
+  if (!this.isValidPassword() || !this.passwordsMatch()) return;
 
-    this.api.resetPassword(this.model.username, this.model.newPassword)
-      .subscribe({
-        next: (msg: string) => {
-          this.successMessage = msg;
-          this.errorMessage = '';
-          this.showLogin = true;
-        },
-        error: (err) => {
-          this.errorMessage = err?.error || 'Reset failed';
-          this.successMessage = '';
-        }
-      });
+  this.api.resetPassword(this.model.username, this.model.newPassword)
+    .subscribe({
+      next: (msg: string) => {
+        this.successMessage = msg || 'Password updated successfully. Please login again.';
+        this.errorMessage = '';
+        this.showLogin = true;
+      },
+    error: (err) => {
+  let message = 'Unable to reset password. Please try again.';
+
+  if (typeof err.error === 'string') {
+    try {
+      const parsed = JSON.parse(err.error);
+      message = parsed.error || message;
+    } catch {
+      message = err.error;
+    }
+  } else if (err.error?.error) {
+    message = err.error.error;
   }
+
+  this.errorMessage = message;
+  this.successMessage = '';
+  this.showLogin = false;
+}
+
+    });
+}
+
 }

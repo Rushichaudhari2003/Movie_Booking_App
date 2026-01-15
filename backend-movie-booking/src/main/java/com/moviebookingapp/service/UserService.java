@@ -58,15 +58,22 @@ public class UserService {
 public void resetPassword(String username, String newPassword) {
 
     User user = userRepository.findByUsername(username)
-        .orElseThrow(() -> new RuntimeException("User not found"));
+            .orElseThrow(() -> new RuntimeException("User not found"));
 
-    // 🔐 NEW: prevent reusing same password
-    if (passwordEncoder.matches(newPassword, user.getPassword())) {
+    // Store old hash explicitly
+    String oldEncodedPassword = user.getPassword();
+
+    // Compare new raw password with old encoded password
+    if (passwordEncoder.matches(newPassword, oldEncodedPassword)) {
         throw new RuntimeException("New password cannot be the same as old password");
     }
 
-    user.setPassword(passwordEncoder.encode(newPassword));
+    // Encode & update
+    String encodedNewPassword = passwordEncoder.encode(newPassword);
+    user.setPassword(encodedNewPassword);
+
     userRepository.save(user);
 }
+
 
 }
